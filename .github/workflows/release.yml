@@ -1,0 +1,151 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "theme.json"
+      - "dist/**"
+      - "preview.png"
+      - ".github/workflows/release.yml"
+      - "scripts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate theme package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import json, re
+
+          root = Path('.')
+          manifest_path = root / 'theme.json'
+          index_path = root / 'dist' / 'index.html'
+          preview_path = root / 'preview.png'
+
+          if not manifest_path.is_file():
+              raise SystemExit('theme.json missing')
+          if not index_path.is_file():
+              raise SystemExit('dist/index.html missing')
+          if not preview_path.is_file():
+              raise SystemExit('preview.png missing')
+
+          if manifest_path.stat().st_size > 64 * 1024:
+              raise SystemExit('theme.json exceeds 64 KiB')
+
+          theme = json.loads(manifest_path.read_text())
+          required = ['name', 'short', 'description', 'version', 'author', 'url']
+          for key in required:
+              if key not in theme or not isinstance(theme[key], str):
+                  raise SystemExit(f'theme.json field {key!r} must be a string')
+          if theme['short'] != 'atlas' or not re.fullmatch(r'[A-Za-z0-9_-]+', theme['short']):
+              raise SystemExit('theme short must be atlas and a valid directory name')
+          if not re.fullmatch(r'\d+\.\d+\.\d+', theme['version']):
+              raise SystemExit('theme version must be x.y.z')
+          if theme['url'] != 'https://github.com/wxte/Monitor-Theme-Atlas':
+              raise SystemExit('theme url must point to this repository')
+
+          html = index_path.read_text()
+          if f'content="v{theme["version"]}"' not in html:
+              raise SystemExit('dist/index.html theme-version does not match theme.json')
+
+          total = 0
+          for path in [manifest_path, preview_path, *sorted((root / 'dist').rglob('*'))]:
+              if path.is_symlink():
+                  raise SystemExit(f'symlink not allowed in theme package: {path}')
+              if not path.is_file():
+                  continue
+              size = path.stat().st_size
+              if size > 8 * 1024 * 1024:
+                  raise SystemExit(f'file exceeds Monitor 8 MiB limit: {path}')
+              total += size
+          if total > 64 * 1024 * 1024:
+              raise SystemExit('expanded theme exceeds Monitor 64 MiB limit')
+
+          assets = root / 'dist' / 'assets'
+          apps = list(assets.glob('app.*.mjs'))
+          styles = list(assets.glob('atlas.*.css'))
+          if len(apps) != 1 or len(styles) != 1:
+              raise SystemExit('stable package must contain exactly one app asset and one Atlas stylesheet')
+          if (root / 'dist' / 'llms.txt').exists():
+              raise SystemExit('llms.txt is not part of the stable runtime package')
+          if not (root / 'dist' / 'robots.txt').is_file():
+              raise SystemExit('dist/robots.txt missing')
+          hashed = re.compile(r'.+\.[0-9a-f]{12}\.[^.]+$')
+          for path in assets.rglob('*'):
+              if path.is_file() and not hashed.fullmatch(path.name):
+                  raise SystemExit(f'asset is not content-hashed: {path}')
+
+          for path in [index_path, *assets.rglob('*.css'), *assets.rglob('*.mjs')]:
+              text = path.read_text(errors='ignore')
+              if 'https://cdn.' in text or 'https://cdn.jsdelivr.net' in text:
+                  raise SystemExit(f'external CDN dependency found in {path}')
+
+          for ref in re.findall(r'(?:src|href)="(/assets/[^"]+)"', html):
+              target = root / 'dist' / ref.lstrip('/')
+              if not target.is_file():
+                  raise SystemExit(f'index references missing asset: {ref}')
+          PY
+
+          node --check dist/assets/app.*.mjs
+          node --check dist/assets/globe.*.mjs
+          node --check dist/assets/vendor/*.mjs
+          node --check scripts/runtime-contract-tests.mjs
+          node scripts/runtime-contract-tests.mjs
+
+      - name: Package installable theme
+        id: meta
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(python -c 'import json; print(json.load(open("theme.json"))["version"])')"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          tar czf theme.tar.gz dist theme.json preview.png
+          size="$(stat -c%s theme.tar.gz)"
+          if [ "$size" -gt $((32 * 1024 * 1024)) ]; then
+            echo "theme.tar.gz exceeds Monitor 32 MiB upload limit" >&2
+            exit 1
+          fi
+          sha256sum theme.tar.gz | cut -d' ' -f1 | tee theme.tar.gz.sha256
+
+      - name: Prepare release notes
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+        shell: python
+        run: |
+          from pathlib import Path
+          import os, re
+          version = os.environ['VERSION']
+          text = Path('CHANGELOG.md').read_text() if Path('CHANGELOG.md').is_file() else ''
+          match = re.search(rf'^## v{re.escape(version)}\s*\n(.*?)(?=^## |\Z)', text, re.M | re.S)
+          notes = match.group(1).strip() if match else '主题维护更新。'
+          Path('release-notes.md').write_text(notes + '\n')
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="v${VERSION}"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" theme.tar.gz theme.tar.gz.sha256 --clobber --repo "$GITHUB_REPOSITORY"
+            gh release edit "$tag" --notes-file release-notes.md --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$tag" theme.tar.gz theme.tar.gz.sha256 \
+              --title "Atlas for Monitor ${tag}" \
+              --notes-file release-notes.md \
+              --target "$GITHUB_SHA" \
+              --repo "$GITHUB_REPOSITORY"
+          fi

@@ -1,0 +1,95 @@
+import assert from "node:assert/strict"
+import fs from "node:fs"
+import vm from "node:vm"
+
+const html = fs.readFileSync("dist/index.html", "utf8")
+const appRef = html.match(/\/assets\/(app\.[^"]+\.mjs)/)?.[1]
+const cssRef = html.match(/\/assets\/(atlas\.[^"]+\.css)/)?.[1]
+assert.ok(appRef && cssRef, "index must reference hashed app/css assets")
+
+const source = fs.readFileSync(`dist/assets/${appRef}`, "utf8")
+const css = fs.readFileSync(`dist/assets/${cssRef}`, "utf8")
+
+for (const marker of [
+  "function parseNodesFrame",
+  "function ensureDetailRoute",
+  "function patchKpis",
+  "function regionSignature",
+  "function syncNotice",
+  "if(document.hidden)return",
+  "requestIdleCallback",
+  "state.wsBlocked",
+  "function activeNodeView",
+]) assert.ok(source.includes(marker), `missing runtime contract: ${marker}`)
+
+assert.ok(!source.includes("kpiEl.outerHTML=kpis(nodes)"), "live frames must not replace the whole KPI grid")
+assert.ok(source.includes("function themeActionLabel"), "theme switch must expose a state-aware label")
+assert.ok(source.includes("history.replaceState({},'','/');state.route=null"), "invalid detail routes must recover to overview")
+assert.ok(!source.includes('<div class="nodes">${nodes.map(nodeRow).join(\'\')}</div><div class="node-card-grid">'), "nodesPanel must not render both views together")
+assert.ok(!source.includes('<article class="node '), "node rows must not misuse article role=button")
+assert.ok(!source.includes('<article class="node-card '), "node cards must not misuse article role=button")
+assert.ok(css.includes("content-visibility:auto"), "offscreen node rendering optimization missing")
+assert.ok(html.includes('name="description"'), "index must include a meta description")
+assert.ok(fs.readFileSync("dist/robots.txt","utf8").startsWith("User-agent:"), "robots.txt must be valid text")
+assert.ok(!fs.existsSync("dist/llms.txt"), "llms.txt is intentionally not shipped")
+assert.ok(!/\/\* v0\.9\.[3-7]/.test(css), "superseded v0.9.3-v0.9.7 card CSS must be consolidated")
+
+function extractFunction(name) {
+  const start = source.indexOf(`function ${name}(`)
+  assert.ok(start >= 0, `function ${name} missing`)
+  const candidates = [
+    source.indexOf("\n  function ", start + 1),
+    source.indexOf("\n  async function ", start + 1),
+    source.indexOf("\n  class ", start + 1),
+    source.indexOf("\n  const ", start + 1),
+  ].filter((n) => n > start)
+  const end = candidates.length ? Math.min(...candidates) : source.length
+  return source.slice(start, end).trim()
+}
+
+const alpha2 = source.match(/const ALPHA2=\/[^;]+;/)?.[0]
+assert.ok(alpha2, "ALPHA2 validator missing")
+
+const sandbox = {}
+vm.createContext(sandbox)
+vm.runInContext([
+  extractFunction("n"),
+  extractFunction("monthUsage"),
+  alpha2,
+  extractFunction("safeMetrics"),
+  extractFunction("safeNodes"),
+  extractFunction("parseNodesFrame"),
+  extractFunction("nodeShape"),
+  "globalThis.__atlas={monthUsage,safeMetrics,safeNodes,parseNodesFrame,nodeShape}",
+].join("\n"), sandbox)
+
+const { monthUsage, safeMetrics, safeNodes, parseNodesFrame, nodeShape } = sandbox.__atlas
+
+const mib = 1024 * 1024
+const traffic = { month_rx: 10 * mib, month_tx: 4 * mib }
+assert.equal(monthUsage({ ...traffic, traffic_mode: "sum" }), 14 * mib)
+assert.equal(monthUsage({ ...traffic, traffic_mode: "down" }), 10 * mib)
+assert.equal(monthUsage({ ...traffic, traffic_mode: "up" }), 4 * mib)
+assert.equal(monthUsage({ ...traffic, traffic_mode: "max" }), 10 * mib)
+
+const metrics = {
+  uptime: 1, cpu: 1, mem_total: 2, mem_used: 1, swap_total: 0, swap_used: 0,
+  disk_total: 2, disk_used: 1, net_rx: 0, net_tx: 0, total_rx: 0, total_tx: 0,
+  month_rx: 0, month_tx: 0, tcp: 0, udp: 0, procs: 1, load: [0, 0, 0],
+}
+assert.ok(safeMetrics(metrics))
+assert.equal(safeMetrics({ ...metrics, cpu: -1 }), null)
+
+const cleaned = safeNodes([{ id: 1, country: "us", metrics }, { id: 2, country: "USA", metrics }])
+assert.equal(cleaned[0].country, "US")
+assert.equal(cleaned[1].country, "")
+
+assert.equal(parseNodesFrame("not-json"), null)
+assert.equal(parseNodesFrame("{}"), null)
+assert.ok(Array.isArray(parseNodesFrame('{"nodes":[]}')))
+
+const a = [{ id: 2, sort: 2, name: "b" }, { id: 1, sort: 1, name: "a" }]
+const b = [...a].reverse()
+assert.equal(nodeShape(a), nodeShape(b), "nodeShape must be stable across payload ordering")
+
+console.log("Atlas runtime contract tests passed")
