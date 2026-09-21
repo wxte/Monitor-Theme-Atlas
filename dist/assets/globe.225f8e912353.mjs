@@ -182,19 +182,20 @@ export class AtlasGlobe{
       candidates.push({el,x,y,w,h,rawY});
     }
     candidates.sort((a,b)=>a.rawY-b.rawY||a.x-b.x);
-    const placed=[],offsets=mobile?[0,-15,15,-30,30,-45,45]:[0,-13,13,-26,26,-39,39];
+    const placed=[],offsets=mobile?[[0,0],[0,-16],[0,16],[-18,0],[18,0],[-16,-16],[16,16],[-16,16],[16,-16],[0,-32],[0,32]]:[[0,0],[0,-14],[0,14],[-16,0],[16,0],[-14,-14],[14,14],[-14,14],[14,-14],[0,-28],[0,28]];
     for(const c of candidates){
-      let chosen=c.y,chosenRect=null;
-      for(const off of offsets){
-        const y=limit(c.y+off,inset+c.h/2,Math.max(inset+c.h/2,height-inset-c.h/2));
-        const rect={left:c.x-c.w/2-margin,right:c.x+c.w/2+margin,top:y-c.h/2-margin,bottom:y+c.h/2+margin};
+      let chosenX=c.x,chosenY=c.y,chosenRect=null;
+      for(const [dx,dy] of offsets){
+        const x=limit(c.x+dx,inset+c.w/2,Math.max(inset+c.w/2,width-inset-c.w/2));
+        const y=limit(c.y+dy,inset+c.h/2,Math.max(inset+c.h/2,height-inset-c.h/2));
+        const rect={left:x-c.w/2-margin,right:x+c.w/2+margin,top:y-c.h/2-margin,bottom:y+c.h/2+margin};
         const hit=placed.some(p=>!(rect.right<=p.left||rect.left>=p.right||rect.bottom<=p.top||rect.top>=p.bottom));
-        if(!hit){chosen=y;chosenRect=rect;break;}
+        if(!hit){chosenX=x;chosenY=y;chosenRect=rect;break;}
       }
-      if(!chosenRect)chosenRect={left:c.x-c.w/2-margin,right:c.x+c.w/2+margin,top:chosen-c.h/2-margin,bottom:chosen+c.h/2+margin};
+      if(!chosenRect)chosenRect={left:chosenX-c.w/2-margin,right:chosenX+c.w/2+margin,top:chosenY-c.h/2-margin,bottom:chosenY+c.h/2+margin};
       placed.push(chosenRect);
-      c.el.style.left=`${c.x.toFixed(1)}px`;
-      c.el.style.top=`${chosen.toFixed(1)}px`;
+      c.el.style.left=`${chosenX.toFixed(1)}px`;
+      c.el.style.top=`${chosenY.toFixed(1)}px`;
       c.el.style.opacity='1';
     }
   }
