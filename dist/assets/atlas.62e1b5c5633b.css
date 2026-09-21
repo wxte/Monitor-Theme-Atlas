@@ -1047,23 +1047,22 @@ html.dark .brand-mark img{filter:invert(1)}
 /* v1.3.0 — align card grid with overview width + 7D network context. */
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
-  --net-ok:rgb(20 218 145);
-  --net-warn:rgb(255 178 42);
-  --net-bad:rgb(255 91 104);
-  --net-glow:.22;
+  --net-ok:rgb(0 230 145);
+  --net-warn:rgb(255 190 36);
+  --net-bad:rgb(255 82 99);
+  contain:paint;
 }
 html.dark .node-card-network{
-  --net-ok:rgb(54 232 166);
-  --net-warn:rgb(255 194 72);
-  --net-bad:rgb(255 115 126);
-  --net-glow:.27;
+  --net-ok:rgb(44 238 166);
+  --net-warn:rgb(255 202 64);
+  --net-bad:rgb(255 108 121);
 }
 .network-lane-head span{display:block}
-.network-samples{gap:2px;height:6px}
+.network-samples{gap:2px;height:6px;contain:layout paint}
 .network-samples i{height:6px;border-radius:999px}
-.network-samples i.ok{background:var(--net-ok);box-shadow:0 0 5px rgb(20 218 145 / var(--net-glow))}
-.network-samples i.warn{background:var(--net-warn);box-shadow:0 0 5px rgb(255 178 42 / var(--net-glow))}
-.network-samples i.bad{background:var(--net-bad);box-shadow:0 0 5px rgb(255 91 104 / var(--net-glow))}
+.network-samples i.ok{background:var(--net-ok);box-shadow:none}
+.network-samples i.warn{background:var(--net-warn);box-shadow:none}
+.network-samples i.bad{background:var(--net-bad);box-shadow:none}
 .network-samples i.idle{border-radius:999px}
 @media(max-width:760px){
   .node-card-grid{padding-left:0;padding-right:0}
@@ -1075,3 +1074,6 @@ html.dark .node-card-network{
 
 
 /* v1.3.1 — 7D lives in detail history only; overview remains 1H and lightweight. */
+
+
+/* v1.3.2 — Mac/Safari paint fix: bright solid pills, no per-pill blur shadows. */

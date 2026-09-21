@@ -34,6 +34,8 @@ assert.ok(source.includes("Math.min(2,nodes.length)"), "overview latency loader 
 assert.ok(css.includes(".node-card-network"), "primary node cards must expose the three-network matrix")
 assert.ok(css.includes(".node-card-grid{padding-left:0;padding-right:0"), "card grid must align with the overview width")
 assert.ok(css.includes("border-radius:999px"), "network sample pills must stay rounded")
+assert.ok(css.includes(".network-samples{gap:2px;height:6px;contain:layout paint}"), "network samples must keep paint containment")
+assert.ok(css.includes(".network-samples i.ok{background:var(--net-ok);box-shadow:none}"), "network pills must not use blur shadows")
 assert.ok(source.includes("trafficResetText"), "node cards must expose traffic reset timing")
 assert.ok(!source.includes("nodeExtraText(node,m)"), "overview ping must stay card-only")
 assert.ok(source.includes("history.replaceState({},'','/');state.route=null"), "invalid detail routes must recover to overview")
