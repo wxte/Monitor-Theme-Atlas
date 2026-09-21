@@ -1048,14 +1048,14 @@ html.dark .brand-mark img{filter:invert(1)}
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
   --net-ok:var(--meter-neutral);
-  --net-warn:rgb(218 132 42);
-  --net-bad:rgb(181 62 58);
+  --net-warn:rgb(226 116 24);
+  --net-bad:rgb(202 54 52);
   contain:paint;
 }
 html.dark .node-card-network{
   --net-ok:var(--meter-neutral);
-  --net-warn:rgb(214 106 36);
-  --net-bad:rgb(204 70 65);
+  --net-warn:rgb(230 128 32);
+  --net-bad:rgb(218 70 66);
 }
 .network-lane-head span{display:block}
 .network-samples{gap:2px;height:6px;contain:layout paint}
@@ -1109,14 +1109,14 @@ html.dark .node-card-network{
 
 /* v1.3.12 — packet-loss lanes use a tender green family; resource/latency colors stay unchanged. */
 .node-card-network{
-  --loss-ok:rgb(82 158 112);
-  --loss-warn:rgb(64 143 99);
-  --loss-bad:rgb(48 126 86);
+  --loss-ok:rgb(58 160 104);
+  --loss-warn:rgb(48 145 93);
+  --loss-bad:rgb(41 129 82);
 }
 html.dark .node-card-network{
-  --loss-ok:rgb(96 176 126);
-  --loss-warn:rgb(76 158 110);
-  --loss-bad:rgb(58 139 96);
+  --loss-ok:rgb(72 178 118);
+  --loss-warn:rgb(60 162 104);
+  --loss-bad:rgb(50 145 96);
 }
 .network-loss .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
 .network-loss .network-samples i.warn{background:var(--loss-warn);box-shadow:none}
@@ -1124,13 +1124,16 @@ html.dark .node-card-network{
 
 /* v1.3.13 — darker tender green + quota traffic color ramp. */
 .card-traffic{
-  --traffic-ok:rgb(82 158 112);
-  --traffic-warn:rgb(218 132 42);
-  --traffic-bad:rgb(181 62 58);
+  --traffic-ok:rgb(58 160 104);
+  --traffic-warn:rgb(226 116 24);
+  --traffic-bad:rgb(202 54 52);
 }
 html.dark .card-traffic{
-  --traffic-ok:rgb(96 176 126);
-  --traffic-warn:rgb(214 106 36);
-  --traffic-bad:rgb(204 70 65);
+  --traffic-ok:rgb(72 178 118);
+  --traffic-warn:rgb(230 128 32);
+  --traffic-bad:rgb(218 70 66);
 }
 .bar.card-traffic-bar span{background:var(--traffic-ok)}
+
+
+/* v1.3.15 — solid RGB palette: higher saturation, no glow/shadow. */
