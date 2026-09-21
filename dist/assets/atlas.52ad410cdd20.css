@@ -1163,3 +1163,17 @@ html.dark .card-traffic{
   .node-card-os{width:18px;height:18px}.node-card-os .os-icon{width:17px;height:17px}
   .card-resource-label{gap:4px}.card-resource-label em{font-size:7.9px}
 }
+
+
+/* v1.3.18 — consistent card hierarchy + low-latency green + softer divider. */
+.node-card{
+  --card-label:color-mix(in srgb,var(--muted) 68%,var(--text));
+  --card-meta:color-mix(in srgb,var(--muted) 82%,var(--text));
+}
+.card-resource-top>span{color:var(--card-label)}
+.card-resource-label em,.card-traffic-label em{color:var(--card-meta)}
+.card-resource-sub,.node-card-activity span{color:var(--card-meta)}
+.node-card-resources{margin-top:9px}
+.network-column+.network-column{border-left-color:color-mix(in srgb,var(--border) 55%,transparent)}
+.network-latency .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
+@media(max-width:760px){.node-card-resources{margin-top:8px}}
