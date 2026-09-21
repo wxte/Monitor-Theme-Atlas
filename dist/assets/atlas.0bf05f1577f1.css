@@ -1202,3 +1202,9 @@ html.dark .card-traffic{
 
 /* v1.3.22 — shared SVG sprite for OS glyphs; no layout/paint footprint. */
 .os-sprite{position:absolute!important;width:0!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
+
+
+/* v1.3.23 — font-logo-like distro glyphs + optically centered admin sliders icon. */
+.node-card-os .os-icon{width:17px;height:17px}
+.admin-btn{width:34px!important}
+.admin-btn svg{width:16px!important;height:16px!important;display:block;transform:translateY(.15px)}
