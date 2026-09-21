@@ -1021,7 +1021,7 @@ html.dark .brand-mark img{filter:invert(1)}
 .network-lane-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px;margin-bottom:4px;color:var(--muted)}
 .network-lane-head span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:560 8.8px/1 var(--font-ui)}
 .network-lane-head b{flex:0 0 auto;color:var(--text);font:650 9.6px/1 var(--font-data);font-variant-numeric:tabular-nums}
-.network-samples{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:2px;height:5px}
+.network-samples{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;height:5px}
 .network-samples i{display:block;min-width:0;height:5px;border-radius:1.5px;background:var(--soft)}
 .network-samples i.ok{background:color-mix(in srgb,var(--ok) 86%,var(--soft))}
 .network-samples i.warn{background:color-mix(in srgb,var(--warn) 86%,var(--soft))}
@@ -1048,13 +1048,13 @@ html.dark .brand-mark img{filter:invert(1)}
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
   --net-ok:color-mix(in srgb,var(--text) 82%,var(--muted));
-  --net-warn:rgb(255 190 36);
+  --net-warn:rgb(210 145 72);
   --net-bad:rgb(255 82 99);
   contain:paint;
 }
 html.dark .node-card-network{
   --net-ok:color-mix(in srgb,var(--text) 86%,var(--muted));
-  --net-warn:rgb(255 202 64);
+  --net-warn:rgb(224 160 88);
   --net-bad:rgb(255 108 121);
 }
 .network-lane-head span{display:block}
@@ -1080,3 +1080,6 @@ html.dark .node-card-network{
 
 
 /* v1.3.3 — healthy network samples use Atlas neutral gray; warn/bad keep color. */
+
+
+/* v1.3.4 — relaxed 10-pill density + low-saturation copper warning tone. */
