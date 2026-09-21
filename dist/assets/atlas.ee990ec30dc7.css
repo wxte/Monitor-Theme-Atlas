@@ -1047,15 +1047,15 @@ html.dark .brand-mark img{filter:invert(1)}
 /* v1.3.0 — align card grid with overview width + 7D network context. */
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
-  --net-ok:color-mix(in srgb,var(--text) 82%,var(--muted));
-  --net-warn:rgb(210 145 72);
-  --net-bad:rgb(255 82 99);
+  --net-ok:color-mix(in srgb,var(--muted) 72%,var(--faint));
+  --net-warn:rgb(190 139 92);
+  --net-bad:rgb(201 112 120);
   contain:paint;
 }
 html.dark .node-card-network{
-  --net-ok:color-mix(in srgb,var(--text) 86%,var(--muted));
-  --net-warn:rgb(224 160 88);
-  --net-bad:rgb(255 108 121);
+  --net-ok:color-mix(in srgb,var(--muted) 78%,var(--text));
+  --net-warn:rgb(205 151 104);
+  --net-bad:rgb(218 128 136);
 }
 .network-lane-head span{display:block}
 .network-samples{gap:2px;height:6px;contain:layout paint}
@@ -1083,3 +1083,6 @@ html.dark .node-card-network{
 
 
 /* v1.3.4 — relaxed 10-pill density + low-saturation copper warning tone. */
+
+
+/* v1.3.5 — softer three-step network palette: light gray / muted orange / soft red. */
