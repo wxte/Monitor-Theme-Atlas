@@ -162,3 +162,9 @@ assert.ok(!css.includes("/* v1.2.0"), "incremental v1.x CSS override stack must 
 assert.ok(!css.includes(".node-card-meta{"), "dead node-card-meta CSS must be removed")
 assert.ok(!css.includes(".os-badge{"), "dead os-badge CSS must be removed")
 assert.ok(css.includes("Consolidated node-card/network/runtime overrides — v1.3.25"), "consolidated override block missing")
+
+assert.ok(css.includes(".detail-meters .bar span{background:var(--meter-neutral)}"), "detail resource meters must share the card neutral meter")
+assert.ok(css.includes("--detail-chart-neutral:color-mix(in srgb,var(--meter-neutral) 78%,var(--muted))"), "detail history neutral token missing")
+assert.ok(css.includes("--detail-chart-ok:color-mix(in srgb,rgb(58 160 104) 82%,var(--muted))"), "detail history green must derive from the card healthy green")
+assert.ok(css.includes(".detail-drawer .line-rx{stroke:var(--detail-chart-ok)}"), "detail network RX line must use the softened healthy green")
+assert.ok(css.includes(".detail-drawer .line-cpu{stroke:var(--detail-chart-neutral)}"), "detail CPU chart must use the softened neutral palette")
