@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.3.17
+
+- 修复 CPU 核心数在 WebSocket / 轮询刷新后消失的问题，实时 patch 现在会持续保留 `1C / 2C`。
+- 卡片删除独立 Meta 行；`x86_64 · kvm/qemu/amazon` 移到 CPU 标题后方。
+- 系统图标移到节点标题行，放在节点名后面，仅保留图标和 tooltip，不显示 Debian / Ubuntu 文字。
+- CPU 右侧继续显示 `2C · 4.9%`；CPU 下方 Load 保持不变。
+- PC 列表、颜色、延迟/丢包/流量、WebSocket 与性能逻辑不变。
+
+
 ## v1.3.16
 
 - 首页节点卡片移除国旗前重复的在线绿点，只保留右侧“在线 xx”状态。
