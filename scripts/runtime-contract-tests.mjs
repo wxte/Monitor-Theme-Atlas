@@ -37,6 +37,8 @@ assert.ok(css.includes("border-radius:999px"), "network sample pills must stay r
 assert.ok(css.includes(".network-samples{gap:2px;height:6px;contain:layout paint}"), "network samples must keep paint containment")
 assert.ok(css.includes(".network-samples i.ok{background:var(--net-ok);box-shadow:none}"), "network pills must not use blur shadows")
 assert.ok(css.includes("--net-ok:color-mix(in srgb,var(--text) 82%,var(--muted))"), "healthy network samples must use Atlas neutral gray")
+assert.ok(css.includes("grid-template-columns:repeat(10,minmax(0,1fr))"), "network sample density must stay at 10 pills")
+assert.ok(css.includes("--net-warn:rgb(210 145 72)"), "warning samples must use the copper tone")
 assert.ok(source.includes("trafficResetText"), "node cards must expose traffic reset timing")
 assert.ok(!source.includes("nodeExtraText(node,m)"), "overview ping must stay card-only")
 assert.ok(source.includes("history.replaceState({},'','/');state.route=null"), "invalid detail routes must recover to overview")
