@@ -1105,3 +1105,19 @@ html.dark .node-card-network{
 
 
 /* v1.3.11 — light-theme orange/red separation; dark palette unchanged. */
+
+
+/* v1.3.12 — packet-loss lanes use a tender green family; resource/latency colors stay unchanged. */
+.node-card-network{
+  --loss-ok:rgb(116 190 148);
+  --loss-warn:rgb(78 166 119);
+  --loss-bad:rgb(49 139 95);
+}
+html.dark .node-card-network{
+  --loss-ok:rgb(126 204 159);
+  --loss-warn:rgb(91 181 132);
+  --loss-bad:rgb(61 153 105);
+}
+.network-loss .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
+.network-loss .network-samples i.warn{background:var(--loss-warn);box-shadow:none}
+.network-loss .network-samples i.bad{background:var(--loss-bad);box-shadow:none}

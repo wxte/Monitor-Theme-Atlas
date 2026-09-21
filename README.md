@@ -4,7 +4,7 @@ Atlas 是为 [Monitor](https://github.com/monitor-probe/monitor) 制作的独立
 
 ![Atlas for Monitor 概览](./preview.png)
 
-当前版本：**v1.3.11**
+当前版本：**v1.3.12**
 
 ## 主题简介
 

@@ -44,6 +44,8 @@ assert.ok(css.includes(".card-resource .bar:not(.card-traffic-bar) span{backgrou
 assert.ok(css.includes("grid-template-columns:repeat(10,minmax(0,1fr))"), "network sample density must stay at 10 pills")
 assert.ok(css.includes("--net-warn:rgb(218 132 42)"), "warning samples must use the deeper orange tone")
 assert.ok(css.includes("--net-bad:rgb(181 62 58)"), "bad samples must use the clearer soft red tone")
+assert.ok(css.includes("--loss-ok:rgb(116 190 148)"), "packet-loss tender green missing")
+assert.ok(css.includes(".network-loss .network-samples i.bad{background:var(--loss-bad);box-shadow:none}"), "packet-loss bad state must stay in the green family")
 assert.ok(source.includes("trafficResetText"), "node cards must expose traffic reset timing")
 assert.ok(!source.includes("nodeExtraText(node,m)"), "overview ping must stay card-only")
 assert.ok(source.includes("history.replaceState({},'','/');state.route=null"), "invalid detail routes must recover to overview")
