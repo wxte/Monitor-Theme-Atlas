@@ -148,3 +148,6 @@ assert.ok(source.includes("function osSprite()"), "OS SVG sprite definition miss
 assert.ok(source.includes('id="atlas-os-debian"'), "Debian sprite symbol missing")
 assert.ok(source.includes('<use href="#atlas-os-debian"></use>'), "OS icons must reference sprite symbols")
 assert.ok(css.includes(".os-sprite{position:absolute!important;width:0!important;height:0!important"), "OS sprite must stay out of layout")
+
+assert.ok(source.includes('<circle cx="14" cy="6" r="2"/>'), "admin sliders icon missing")
+assert.ok(css.includes(".admin-btn svg{width:16px!important;height:16px!important"), "admin icon optical alignment missing")
