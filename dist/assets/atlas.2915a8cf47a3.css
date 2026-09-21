@@ -1150,3 +1150,16 @@ html.dark .card-traffic{
 .live-mode.connecting .presence-dot{background:var(--faint);box-shadow:none;animation:pulse 1.2s ease-in-out infinite}
 .node-card.offline .node-card-runtime .presence-dot{background:var(--bad);box-shadow:none;animation:none}
 @keyframes presencePulse{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--ok) 3%,transparent)}}
+
+
+/* v1.3.17 — move static machine metadata into the CPU header; OS icon stays by node title. */
+.node-card-resources{margin-top:14px}
+.node-card-os{width:19px;height:19px;display:grid;place-items:center;flex:0 0 auto;color:var(--muted)}
+.node-card-os .os-icon{width:18px;height:18px;display:block}
+.card-resource-label{min-width:0;display:inline-flex;align-items:baseline;gap:5px;white-space:nowrap}
+.card-resource-label em{min-width:0;overflow:hidden;text-overflow:ellipsis;font:520 8.2px/1 var(--font-data);font-style:normal;color:var(--faint)}
+@media(max-width:760px){
+  .node-card-resources{margin-top:13px}
+  .node-card-os{width:18px;height:18px}.node-card-os .os-icon{width:17px;height:17px}
+  .card-resource-label{gap:4px}.card-resource-label em{font-size:7.9px}
+}
