@@ -231,7 +231,7 @@
     ensureDetailRoute();
   }
   function teardownGlobe(){if(state.globe){try{state.globe.destroy()}catch{}state.globe=null}}
-  function loadGlobe(){if(!state.globeLoad)state.globeLoad=import('./globe.225f8e912353.mjs').catch(e=>{state.globeLoad=null;throw e});return state.globeLoad}
+  function loadGlobe(){if(!state.globeLoad)state.globeLoad=import('./globe.39303d616a69.mjs').catch(e=>{state.globeLoad=null;throw e});return state.globeLoad}
   async function mountGlobe(){const canvas=document.getElementById('atlas-globe');if(!canvas||state.globe)return;try{const mod=await loadGlobe();if(!canvas.isConnected||state.globe)return;const globe=new mod.AtlasGlobe(canvas);if(!canvas.isConnected){try{globe.destroy()}catch{};return}state.globe=globe;state.globe.setNodes(state.nodes||[])}catch{}}
   function scheduleGlobe(){const run=()=>{if(!document.hidden)mountGlobe()};if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:350});else setTimeout(run,40)}
   function render(){if(!state.me)return;if(!state.me.public_page&&!state.me.authed){location.href='/admin/';return}teardownGlobe();if(state.nodes)state.regionShape=regionSignature(sortedNodes());app.innerHTML=overview();document.title=`${state.me.site_name||'Status'}`;requestAnimationFrame(()=>{scheduleGlobe();ensureDetailRoute()})}
