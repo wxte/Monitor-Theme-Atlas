@@ -1073,3 +1073,31 @@ html.dark .card-traffic{--traffic-ok:rgb(72 178 118);--traffic-warn:rgb(230 128 
   .network-samples{gap:1.2px}
 }
 @supports (content-visibility:auto){.node-card{contain-intrinsic-size:auto 330px}}
+
+/* v1.3.26 — detail colors follow the node-card palette, with history curves one level softer. */
+.detail-drawer{
+  --detail-chart-neutral:color-mix(in srgb,var(--meter-neutral) 78%,var(--muted));
+  --detail-chart-neutral-soft:color-mix(in srgb,var(--meter-neutral) 54%,var(--muted));
+  --detail-chart-ok:color-mix(in srgb,rgb(58 160 104) 82%,var(--muted));
+}
+html.dark .detail-drawer{
+  --detail-chart-ok:color-mix(in srgb,rgb(72 178 118) 82%,var(--muted));
+}
+.detail-meters .bar span{background:var(--meter-neutral)}
+.detail-meters .bar.warn span,.detail-meters .bar.bad span{background:var(--meter-neutral)}
+.detail-drawer .line-cpu{stroke:var(--detail-chart-neutral)}
+.detail-drawer .line-mem{stroke:var(--detail-chart-neutral-soft)}
+.detail-drawer .line-disk{stroke:var(--detail-chart-neutral-soft)}
+.detail-drawer .line-rx{stroke:var(--detail-chart-ok)}
+.detail-drawer .line-tx{stroke:var(--detail-chart-neutral-soft)}
+.detail-drawer .probe-line.probe-0{stroke:var(--detail-chart-neutral)}
+.detail-drawer .probe-line.probe-1{stroke:var(--detail-chart-ok)}
+.detail-drawer .probe-line.probe-2{stroke:var(--detail-chart-neutral-soft)}
+.detail-drawer .probe-line.probe-3{stroke:color-mix(in srgb,var(--net-warn,rgb(226 116 24)) 72%,var(--muted))}
+.detail-drawer .probe-line.probe-4{stroke:color-mix(in srgb,var(--detail-chart-ok) 58%,var(--detail-chart-neutral))}
+.detail-drawer .probe-swatch.probe-0{background:var(--detail-chart-neutral)}
+.detail-drawer .probe-swatch.probe-1{background:var(--detail-chart-ok)}
+.detail-drawer .probe-swatch.probe-2{background:var(--detail-chart-neutral-soft)}
+.detail-drawer .probe-swatch.probe-3{background:color-mix(in srgb,rgb(226 116 24) 72%,var(--muted))}
+.detail-drawer .probe-swatch.probe-4{background:color-mix(in srgb,var(--detail-chart-ok) 58%,var(--detail-chart-neutral))}
+
