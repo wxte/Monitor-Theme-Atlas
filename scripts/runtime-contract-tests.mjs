@@ -36,7 +36,7 @@ assert.ok(css.includes(".node-card-grid{padding-left:0;padding-right:0"), "card 
 assert.ok(css.includes("border-radius:999px"), "network sample pills must stay rounded")
 assert.ok(css.includes(".network-samples{gap:2px;height:6px;contain:layout paint}"), "network samples must keep paint containment")
 assert.ok(css.includes(".network-samples i.ok{background:var(--net-ok);box-shadow:none}"), "network pills must not use blur shadows")
-assert.ok(css.includes("--net-ok:color-mix(in srgb,var(--text) 82%,var(--muted))"), "healthy network samples must use Atlas neutral gray")
+assert.ok(css.includes("--net-ok:color-mix(in srgb,var(--muted) 72%,var(--faint))"), "healthy network samples must use the current soft gray tone")
 assert.ok(css.includes("grid-template-columns:repeat(10,minmax(0,1fr))"), "network sample density must stay at 10 pills")
 assert.ok(css.includes("--net-warn:rgb(190 139 92)"), "warning samples must use the muted orange tone")
 assert.ok(css.includes("--net-bad:rgb(201 112 120)"), "bad samples must use the soft red tone")
