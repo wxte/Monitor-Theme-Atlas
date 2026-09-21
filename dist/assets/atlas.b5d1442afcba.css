@@ -1183,3 +1183,9 @@ html.dark .card-traffic{
 @media(max-width:760px){
   .detail-drawer{touch-action:pan-y}
 }
+
+
+/* v1.3.20 — restrained system glyph; monochrome, technical, no mascot treatment. */
+.node-card-os{color:var(--card-meta)}
+.drawer-os-icon{border-radius:8px;background:color-mix(in srgb,var(--t-chip-bg) 78%,transparent)}
+.drawer-os-svg{width:18px;height:18px}
