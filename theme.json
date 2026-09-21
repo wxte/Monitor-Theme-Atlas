@@ -2,7 +2,7 @@
   "name": "Atlas for Monitor",
   "short": "atlas",
   "description": "Atlas 风格的 Monitor 状态面板，含地球总览、流量统计与延迟概览。",
-  "version": "1.3.13",
+  "version": "1.3.14",
   "author": "wxte",
   "url": "https://github.com/wxte/Monitor-Theme-Atlas"
 }

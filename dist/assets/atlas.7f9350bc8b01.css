@@ -1109,14 +1109,14 @@ html.dark .node-card-network{
 
 /* v1.3.12 — packet-loss lanes use a tender green family; resource/latency colors stay unchanged. */
 .node-card-network{
-  --loss-ok:rgb(96 176 132);
-  --loss-warn:rgb(66 153 108);
-  --loss-bad:rgb(44 130 88);
+  --loss-ok:rgb(82 158 112);
+  --loss-warn:rgb(64 143 99);
+  --loss-bad:rgb(48 126 86);
 }
 html.dark .node-card-network{
-  --loss-ok:rgb(110 190 145);
-  --loss-warn:rgb(78 166 119);
-  --loss-bad:rgb(53 143 97);
+  --loss-ok:rgb(96 176 126);
+  --loss-warn:rgb(76 158 110);
+  --loss-bad:rgb(58 139 96);
 }
 .network-loss .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
 .network-loss .network-samples i.warn{background:var(--loss-warn);box-shadow:none}
@@ -1124,12 +1124,12 @@ html.dark .node-card-network{
 
 /* v1.3.13 — darker tender green + quota traffic color ramp. */
 .card-traffic{
-  --traffic-ok:rgb(96 176 132);
+  --traffic-ok:rgb(82 158 112);
   --traffic-warn:rgb(218 132 42);
   --traffic-bad:rgb(181 62 58);
 }
 html.dark .card-traffic{
-  --traffic-ok:rgb(110 190 145);
+  --traffic-ok:rgb(96 176 126);
   --traffic-warn:rgb(214 106 36);
   --traffic-bad:rgb(204 70 65);
 }
