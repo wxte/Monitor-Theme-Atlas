@@ -1137,3 +1137,16 @@ html.dark .card-traffic{
 
 
 /* v1.3.15 — solid RGB palette: higher saturation, no glow/shadow. */
+
+
+/* v1.3.16 — card status/meta cleanup + unified live presence dot. */
+.presence-dot{width:6px!important;height:6px!important;border-radius:50%;display:inline-block;flex:0 0 auto;background:var(--faint)}
+.live-mode.ws .presence-dot,.node-card.online .node-card-runtime .presence-dot{
+  background:var(--ok);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 10%,transparent);
+  animation:presencePulse 2.6s ease-in-out infinite;
+}
+.live-mode.poll .presence-dot{background:var(--warn);box-shadow:none;animation:none}
+.live-mode.connecting .presence-dot{background:var(--faint);box-shadow:none;animation:pulse 1.2s ease-in-out infinite}
+.node-card.offline .node-card-runtime .presence-dot{background:var(--bad);box-shadow:none;animation:none}
+@keyframes presencePulse{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--ok) 3%,transparent)}}
