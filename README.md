@@ -4,7 +4,7 @@ Atlas 是为 [Monitor](https://github.com/monitor-probe/monitor) 制作的独立
 
 ![Atlas for Monitor 概览](./preview.png)
 
-当前版本：**v1.0.0**
+当前版本：**v1.1.0**
 
 ## 主题简介
 
@@ -12,7 +12,7 @@ Atlas 是为 [Monitor](https://github.com/monitor-probe/monitor) 制作的独立
 
 ## 主要功能
 
-- 节点状态、CPU / RAM / DISK 与实时上下行
+- 节点状态、CPU / RAM / DISK、实时上下行与首页三网延迟
 - 今日 / 累计流量、本周期流量与剩余额度
 - 联通 / 电信 / 移动延迟、平均值与丢包
 - 1H / 6H / 24H / 7D 历史图表与移动端触摸查看

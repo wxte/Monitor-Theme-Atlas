@@ -20,10 +20,15 @@ for (const marker of [
   "requestIdleCallback",
   "state.wsBlocked",
   "function activeNodeView",
+  "function refreshOverviewPing",
+  "function summarizeOverviewPing",
 ]) assert.ok(source.includes(marker), `missing runtime contract: ${marker}`)
 
 assert.ok(!source.includes("kpiEl.outerHTML=kpis(nodes)"), "live frames must not replace the whole KPI grid")
 assert.ok(source.includes("function themeActionLabel"), "theme switch must expose a state-aware label")
+assert.ok(source.includes("hours=1&points=60&series=ping"), "overview latency must use the bounded ping-only history query")
+assert.ok(source.includes("Math.min(2,nodes.length)"), "overview latency loader must keep history concurrency below the hub gate")
+assert.ok(css.includes(".node-card-latency"), "primary node cards must expose latency")
 assert.ok(source.includes("history.replaceState({},'','/');state.route=null"), "invalid detail routes must recover to overview")
 assert.ok(!source.includes('<div class="nodes">${nodes.map(nodeRow).join(\'\')}</div><div class="node-card-grid">'), "nodesPanel must not render both views together")
 assert.ok(!source.includes('<article class="node '), "node rows must not misuse article role=button")
