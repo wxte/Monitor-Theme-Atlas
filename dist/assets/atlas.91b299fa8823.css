@@ -1177,3 +1177,9 @@ html.dark .card-traffic{
 .network-column+.network-column{border-left-color:color-mix(in srgb,var(--border) 55%,transparent)}
 .network-latency .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
 @media(max-width:760px){.node-card-resources{margin-top:8px}}
+
+
+/* v1.3.19 — mobile detail swipe-to-close; no extra UI chrome. */
+@media(max-width:760px){
+  .detail-drawer{touch-action:pan-y}
+}
