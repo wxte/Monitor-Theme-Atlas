@@ -143,3 +143,8 @@ const b = [...a].reverse()
 assert.equal(nodeShape(a), nodeShape(b), "nodeShape must be stable across payload ordering")
 
 console.log("Atlas runtime contract tests passed")
+
+assert.ok(source.includes("function osSprite()"), "OS SVG sprite definition missing")
+assert.ok(source.includes('id="atlas-os-debian"'), "Debian sprite symbol missing")
+assert.ok(source.includes('<use href="#atlas-os-debian"></use>'), "OS icons must reference sprite symbols")
+assert.ok(css.includes(".os-sprite{position:absolute!important;width:0!important;height:0!important"), "OS sprite must stay out of layout")

@@ -1198,3 +1198,7 @@ html.dark .card-traffic{
 }
 .drawer-os-svg{width:20px;height:20px}
 .node-card-os{color:var(--card-meta)}
+
+
+/* v1.3.22 — shared SVG sprite for OS glyphs; no layout/paint footprint. */
+.os-sprite{position:absolute!important;width:0!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
