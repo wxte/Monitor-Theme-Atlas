@@ -179,8 +179,14 @@ assert.ok(source.includes("trafficBarGradient(trafficPct)"), "desktop list traff
 assert.ok(source.includes("next.style.minHeight=") && source.includes("oldHeight"), "view swap must temporarily preserve panel height")
 assert.ok(css.includes(".nodes-panel.view-list .nodes{padding:12px 0}"), "list/card content top offsets must match")
 assert.ok(css.includes(".nodes-panel.view-list .traffic>.bar{display:block;height:5px"), "desktop list traffic meter must stay visible")
-assert.ok(css.includes("grid-template-columns:minmax(240px,1.42fr) minmax(128px,.68fr)"), "desktop list 1440px layout must keep roomy columns")
+assert.ok(css.includes("grid-template-columns:minmax(205px,1.12fr) minmax(150px,.82fr) minmax(170px,.90fr) minmax(170px,.90fr)"), "desktop list 1440px resource columns must stay roomy")
 
 assert.ok(css.includes(":root{--traffic-ok:rgb(58 160 104);--traffic-warn:rgb(226 116 24);--traffic-bad:rgb(202 54 52)}"), "traffic palette must be globally scoped")
 assert.ok(source.includes("background:${resourceBarGradient(v)}"), "resource bars must render the shared gradient")
 assert.ok(source.includes("if(thresholds)span.style.background=resourceBarGradient(v)"), "live resource bars must update gradient colors")
+
+assert.ok(css.includes(".nodes-panel.view-list .node-heading strong{max-width:calc(100% - 24px);flex:0 1 auto}"), "list OS glyph must stay close to the node name")
+assert.ok(css.includes(".nodes-panel.view-list .flag{width:26px;height:18px;margin-top:0;align-self:flex-start}"), "list flag alignment contract missing")
+assert.ok(css.includes(".nodes-panel.view-list .list-node-os{width:18px;height:18px"), "list OS glyph must share the flag title-line height")
+assert.ok(css.includes(".nodes-panel.view-list .rx:before{color:var(--muted)}"), "desktop list RX arrow must be neutral gray")
+assert.ok(css.includes(".nodes-panel.view-list .traffic{margin-left:-6px;margin-right:6px}"), "desktop list traffic column spacing contract missing")
