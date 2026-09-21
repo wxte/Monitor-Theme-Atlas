@@ -163,7 +163,8 @@ assert.ok(!css.includes(".node-card-meta{"), "dead node-card-meta CSS must be re
 assert.ok(!css.includes(".os-badge{"), "dead os-badge CSS must be removed")
 assert.ok(css.includes("Consolidated node-card/network/runtime overrides — v1.3.25"), "consolidated override block missing")
 
-assert.ok(css.includes(".detail-meters .bar span{background:var(--meter-neutral)}"), "detail resource meters must share the card neutral meter")
+assert.ok(source.includes("function resourceBarGradient(percent)"), "shared resource gradient helper missing")
+assert.ok(source.includes("redStop=80/p*100"), "resource gradient must reach red at 80 percent")
 assert.ok(css.includes("--detail-chart-neutral:color-mix(in srgb,var(--meter-neutral) 78%,var(--muted))"), "detail history neutral token missing")
 assert.ok(css.includes("--detail-chart-ok:color-mix(in srgb,rgb(58 160 104) 82%,var(--muted))"), "detail history green must derive from the card healthy green")
 assert.ok(css.includes(".detail-drawer .line-rx{stroke:var(--detail-chart-ok)}"), "detail network RX line must use the softened healthy green")
@@ -177,4 +178,9 @@ assert.ok(rowSource.includes("runtime-line"), "desktop list runtime must own the
 assert.ok(source.includes("trafficBarGradient(trafficPct)"), "desktop list traffic gradient must update live")
 assert.ok(source.includes("next.style.minHeight=") && source.includes("oldHeight"), "view swap must temporarily preserve panel height")
 assert.ok(css.includes(".nodes-panel.view-list .nodes{padding:12px 0}"), "list/card content top offsets must match")
-assert.ok(css.includes(".nodes .metric .bar.warn span,.nodes .metric .bar.bad span{background:var(--meter-neutral)}"), "desktop list resource meters must stay neutral")
+assert.ok(css.includes(".nodes-panel.view-list .traffic>.bar{display:block;height:5px"), "desktop list traffic meter must stay visible")
+assert.ok(css.includes("grid-template-columns:minmax(240px,1.42fr) minmax(128px,.68fr)"), "desktop list 1440px layout must keep roomy columns")
+
+assert.ok(css.includes(":root{--traffic-ok:rgb(58 160 104);--traffic-warn:rgb(226 116 24);--traffic-bad:rgb(202 54 52)}"), "traffic palette must be globally scoped")
+assert.ok(source.includes("background:${resourceBarGradient(v)}"), "resource bars must render the shared gradient")
+assert.ok(source.includes("if(thresholds)span.style.background=resourceBarGradient(v)"), "live resource bars must update gradient colors")
