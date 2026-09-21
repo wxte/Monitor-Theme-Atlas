@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.3.2
+
+- 修复 MacBook / Safari 在三网胶囊条出现后滚动明显掉帧的问题：移除每个采样胶囊的模糊 `box-shadow`，避免同屏数百个 blur shadow 参与合成。
+- 胶囊继续保留圆润形状，RGB 绿 / 橙 / 红改为更清晰明亮的纯色，不再依赖辉光制造亮度。
+- 三网区域增加 paint containment，采样行增加 layout / paint containment，限制重绘范围。
+- 1H Ping 查询、刷新频率、WebSocket、COBE、详情 7D 与节点卡片 DOM 数量均不改。
+
+
 ## v1.3.1
 
 - 性能修正：首页节点卡片彻底移除 7D 历史预加载、缓存和定时刷新，恢复只使用原有 1H / 60 点 / ping-only 轻量查询。
