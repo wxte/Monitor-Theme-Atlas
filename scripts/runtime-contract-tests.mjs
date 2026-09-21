@@ -168,3 +168,13 @@ assert.ok(css.includes("--detail-chart-neutral:color-mix(in srgb,var(--meter-neu
 assert.ok(css.includes("--detail-chart-ok:color-mix(in srgb,rgb(58 160 104) 82%,var(--muted))"), "detail history green must derive from the card healthy green")
 assert.ok(css.includes(".detail-drawer .line-rx{stroke:var(--detail-chart-ok)}"), "detail network RX line must use the softened healthy green")
 assert.ok(css.includes(".detail-drawer .line-cpu{stroke:var(--detail-chart-neutral)}"), "detail CPU chart must use the softened neutral palette")
+
+assert.ok(source.includes("function listCpuMeter(node,cpu,m)"), "desktop list CPU parity helper missing")
+assert.ok(source.includes('class="node-card-os list-node-os"'), "desktop list must reuse card OS glyph styling")
+const rowSource = source.slice(source.indexOf("function nodeRow(node)"),source.indexOf("function cardMeter("))
+assert.ok(!rowSource.includes("status-wrap"), "desktop list must remove duplicate pre-flag online dot")
+assert.ok(rowSource.includes("runtime-line"), "desktop list runtime must own the presence dot")
+assert.ok(source.includes("trafficBarGradient(trafficPct)"), "desktop list traffic gradient must update live")
+assert.ok(source.includes("next.style.minHeight=") && source.includes("oldHeight"), "view swap must temporarily preserve panel height")
+assert.ok(css.includes(".nodes-panel.view-list .nodes{padding:12px 0}"), "list/card content top offsets must match")
+assert.ok(css.includes(".nodes .metric .bar.warn span,.nodes .metric .bar.bad span{background:var(--meter-neutral)}"), "desktop list resource meters must stay neutral")
