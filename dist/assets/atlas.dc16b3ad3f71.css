@@ -17,14 +17,14 @@
   color-scheme:light;
   --bg:#f4f5f7;--panel:rgba(255,255,255,.88);--panel-solid:#fff;--soft:#f7f8fa;
   --text:#15181d;--muted:#747b86;--faint:#a7adb6;--border:#dfe3e8;--border-strong:#cfd5dc;
-  --accent:#111318;--meter-neutral:#5f646b;--ok:#1c9b68;--warn:#d38a23;--bad:#d95858;--grid:rgba(20,24,30,.035);
+  --accent:#111318;--meter-neutral:#4e5359;--ok:#1c9b68;--warn:#d38a23;--bad:#d95858;--grid:rgba(20,24,30,.035);
   --shadow:0 10px 30px rgba(28,34,44,.045);--shadow-hover:0 14px 34px rgba(28,34,44,.075);
 }
 html.dark{
   color-scheme:dark;
   --bg:#090b0e;--panel:rgba(17,20,24,.9);--panel-solid:#111418;--soft:#15191e;
   --text:#eef1f4;--muted:#949ba5;--faint:#606873;--border:#252b32;--border-strong:#343b44;
-  --accent:#f5f7fa;--meter-neutral:#7b828a;--ok:#44c08a;--warn:#e3a44f;--bad:#e46d6d;--grid:rgba(255,255,255,.027);
+  --accent:#f5f7fa;--meter-neutral:#71777f;--ok:#44c08a;--warn:#e3a44f;--bad:#e46d6d;--grid:rgba(255,255,255,.027);
   --shadow:0 16px 38px rgba(0,0,0,.17);--shadow-hover:0 18px 44px rgba(0,0,0,.24);
 }
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text)}
@@ -1048,14 +1048,14 @@ html.dark .brand-mark img{filter:invert(1)}
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
   --net-ok:var(--meter-neutral);
-  --net-warn:rgb(218 143 72);
-  --net-bad:rgb(207 98 92);
+  --net-warn:rgb(214 124 54);
+  --net-bad:rgb(204 82 78);
   contain:paint;
 }
 html.dark .node-card-network{
   --net-ok:var(--meter-neutral);
-  --net-warn:rgb(229 158 84);
-  --net-bad:rgb(222 116 108);
+  --net-warn:rgb(224 143 70);
+  --net-bad:rgb(218 102 96);
 }
 .network-lane-head span{display:block}
 .network-samples{gap:2px;height:6px;contain:layout paint}
@@ -1093,3 +1093,6 @@ html.dark .node-card-network{
 
 /* v1.3.7 — darker shared neutral; card resource bars explicitly match network OK pills. */
 .card-resource .bar:not(.card-traffic-bar) span{background:var(--meter-neutral)}
+
+
+/* v1.3.8 — deeper neutral gray + clearer orange + warmer red, still without glow. */
