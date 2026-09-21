@@ -151,3 +151,13 @@ assert.ok(css.includes(".os-sprite{position:absolute!important;width:0!important
 
 assert.ok(source.includes('<circle cx="14" cy="6" r="2"/>'), "admin sliders icon missing")
 assert.ok(css.includes(".admin-btn svg{width:16px!important;height:16px!important"), "admin icon optical alignment missing")
+
+assert.ok(source.includes('ICONS.sliders'), "admin action must use sliders icon")
+assert.ok(!source.includes('ICONS.wrench'), "stale wrench icon reference must be removed")
+const toolbar = source.indexOf('<div class="top-actions"><button class="icon-btn" data-action="theme"')
+const admin = source.indexOf('class="icon-btn admin-btn"', toolbar)
+assert.ok(toolbar >= 0 && admin > toolbar, "theme toggle must render before admin action")
+assert.ok(!css.includes("/* v1.2.0"), "incremental v1.x CSS override stack must be consolidated")
+assert.ok(!css.includes(".node-card-meta{"), "dead node-card-meta CSS must be removed")
+assert.ok(!css.includes(".os-badge{"), "dead os-badge CSS must be removed")
+assert.ok(css.includes("Consolidated node-card/network/runtime overrides — v1.3.25"), "consolidated override block missing")

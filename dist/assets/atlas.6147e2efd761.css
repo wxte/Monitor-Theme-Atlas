@@ -37,7 +37,7 @@ button,a{font:inherit;color:inherit}.mono{font-family:ui-monospace,SFMono-Regula
 .main{padding-top:20px}.notice{margin-bottom:14px;padding:10px 12px;border-radius:10px;border:1px solid color-mix(in srgb,var(--bad) 33%,var(--border));background:color-mix(in srgb,var(--bad) 7%,var(--panel-solid));font-size:12px;color:var(--bad)}.notice button{border:0;background:0;padding:0;margin-left:8px;color:inherit;text-decoration:underline;cursor:pointer}
 .kpis{display:grid;grid-template-columns:1fr 1fr 1.22fr 1fr 1fr;gap:12px;margin-bottom:14px}.kpi{min-height:116px;padding:17px 17px 15px;border:1px solid var(--border);border-radius:13px;background:var(--panel);box-shadow:var(--shadow);position:relative;overflow:hidden}.kpi-label{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11.5px}.kpi-label svg{width:13px;height:13px}.kpi-value{margin-top:11px;font:740 27px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.045em}.kpi-value.small{font-size:21px}.kpi-note{margin-top:10px;color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kpi-note b{color:var(--text);font-weight:650}.spark{position:absolute;right:12px;bottom:10px;width:45%;height:44px;opacity:.72}.spark path{fill:none;stroke:var(--text);stroke-width:1.15;vector-effect:non-scaling-stroke}
 .panel{border:1px solid var(--border);border-radius:13px;background:var(--panel);box-shadow:var(--shadow)}.panel-head{min-height:50px;display:flex;align-items:center;gap:10px;padding:0 15px;border-bottom:1px solid var(--border)}.panel-title{font-size:11.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}.count{font:650 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:3px 6px}.panel-spacer{flex:1}.panel-note{font-size:10.5px;color:var(--muted)}
-.nodes-panel{overflow:hidden}.nodes{display:grid}.node{position:relative;transition:background .15s ease}.node+.node{border-top:1px solid var(--border)}.node:hover{background:color-mix(in srgb,var(--soft) 72%,transparent)}.node-main{min-height:86px;display:grid;grid-template-columns:minmax(250px,1.45fr) minmax(90px,.56fr) minmax(116px,.66fr) minmax(116px,.66fr) minmax(150px,.82fr) minmax(122px,.68fr) minmax(112px,.64fr) 36px;align-items:center;gap:14px;padding:13px 13px 13px 16px}.identity{min-width:0;display:flex;align-items:center;gap:10px}.status-wrap{width:12px;height:12px;display:grid;place-items:center;flex:0 0 auto}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}.online .status-dot{background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 11%,transparent);animation:onlinePulse 2.6s ease-in-out infinite}.offline .status-dot{background:var(--bad)}@keyframes onlinePulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--ok) 3%,transparent)}}.flag{width:24px;height:16px;border-radius:4px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 0 0 1px color-mix(in srgb,var(--border) 82%,transparent);background:var(--panel-solid)}.flag svg{width:100%;height:100%;display:block}.node-title{min-width:0}.node-title strong{font-size:14px;font-weight:740;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.node-meta{margin-top:5px;font:530 10px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:5px}.os-badge{display:inline-flex;align-items:center;gap:4px;min-width:0;color:var(--muted)}.os-icon{width:13px;height:13px;display:block;flex:0 0 auto}.meta-sep{color:var(--faint)}.node-extra{margin-top:5px;font-size:9.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nodes-panel{overflow:hidden}.nodes{display:grid}.node{position:relative;transition:background .15s ease}.node+.node{border-top:1px solid var(--border)}.node:hover{background:color-mix(in srgb,var(--soft) 72%,transparent)}.node-main{min-height:86px;display:grid;grid-template-columns:minmax(250px,1.45fr) minmax(90px,.56fr) minmax(116px,.66fr) minmax(116px,.66fr) minmax(150px,.82fr) minmax(122px,.68fr) minmax(112px,.64fr) 36px;align-items:center;gap:14px;padding:13px 13px 13px 16px}.identity{min-width:0;display:flex;align-items:center;gap:10px}.status-wrap{width:12px;height:12px;display:grid;place-items:center;flex:0 0 auto}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}.online .status-dot{background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 11%,transparent);animation:onlinePulse 2.6s ease-in-out infinite}.offline .status-dot{background:var(--bad)}@keyframes onlinePulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--ok) 3%,transparent)}}.flag{width:24px;height:16px;border-radius:4px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 0 0 1px color-mix(in srgb,var(--border) 82%,transparent);background:var(--panel-solid)}.flag svg{width:100%;height:100%;display:block}.node-title{min-width:0}.node-title strong{font-size:14px;font-weight:740;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.node-meta{margin-top:5px;font:530 10px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:5px}.os-icon{width:13px;height:13px;display:block;flex:0 0 auto}.meta-sep{color:var(--faint)}.node-extra{margin-top:5px;font-size:9.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .metric{min-width:0}.metric-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;color:var(--muted);font-size:9.5px}.metric-top b{font:660 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);white-space:nowrap}.bar{height:6px;margin-top:8px;background:var(--soft);border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:var(--meter-neutral);border-radius:inherit;transition:width .35s ease}.bar.warn span{background:var(--warn)}.bar.bad span{background:var(--bad)}.bar.traffic span{background:var(--ok)}
 .net{display:grid;grid-template-columns:1fr 1fr;gap:10px;font:660 11px ui-monospace,SFMono-Regular,Menlo,monospace}.net small,.traffic small,.runtime small{display:block;color:var(--muted);font:530 9px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em}.rx:before{content:"↓ ";color:var(--ok)}.tx:before{content:"↑ ";color:var(--muted)}.traffic{min-width:0}.traffic-value{font:660 11px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}.traffic-sub{margin-top:5px;font:510 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.runtime{font:660 11px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}.runtime-sub{margin-top:5px;color:var(--muted);font:510 9px ui-monospace,SFMono-Regular,Menlo,monospace}.node-open{width:34px;height:34px;border:1px solid var(--border);background:var(--panel-solid);border-radius:8px;color:var(--muted);cursor:pointer;display:grid;place-items:center}.node-open svg{width:14px;height:14px}.node-open:hover{color:var(--text);border-color:var(--border-strong);background:var(--soft)}.offline .node-main{opacity:.66}.offline .bar span{width:0!important}.empty{padding:62px 20px;text-align:center;color:var(--muted);font-size:12px}
 .globe-head{height:50px;display:flex;align-items:center;gap:9px;padding:0 14px;border-bottom:1px solid var(--border)}.globe-head strong{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}.globe-head span{margin-left:auto;font-size:9.5px;color:var(--muted)}.globe-stage{height:270px;position:relative;overflow:hidden}.globe-stage canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab}.globe-stage canvas:active{cursor:grabbing}.globe-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}.globe-label{position:absolute;transform:translate(-50%,-50%);padding:3px 5px;border:1px solid color-mix(in srgb,var(--border) 88%,transparent);border-radius:5px;background:color-mix(in srgb,var(--panel-solid) 93%,transparent);box-shadow:0 3px 12px rgba(0,0,0,.055);font:650 8.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);white-space:nowrap;display:inline-flex;align-items:center;gap:4px;backdrop-filter:blur(5px);transition:opacity .16s ease,transform .16s ease}.globe-label .globe-flag{width:16px;height:11px;display:block;border-radius:2px;box-shadow:0 0 0 1px color-mix(in srgb,var(--border) 62%,transparent)}.globe-label b{font:700 8.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace}.globe-label-count{padding-left:3px;border-left:1px solid var(--border);color:var(--muted);font-size:8px}
@@ -344,13 +344,7 @@ html.dark .globe-label{box-shadow:0 1px 2px rgba(0,0,0,.22),0 6px 18px rgba(0,0,
 .node-title strong{font-weight:670;letter-spacing:-.015em}.node-meta{color:var(--muted)}.node-extra{color:var(--faint)}
 .status-dot{width:6px;height:6px}.online .status-dot{box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 9%,transparent)}
 .flag{background:color-mix(in srgb,var(--panel-solid) 88%,transparent);box-shadow:0 0 0 1px var(--border)}
-.os-badge{
-  padding:2px 5px 2px 4px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  background:color-mix(in srgb,var(--soft) 72%,transparent);
-  color:var(--muted);
-}
+
 .meta-sep{color:color-mix(in srgb,var(--faint) 72%,transparent)}
 .bar{height:5px;background:color-mix(in srgb,var(--soft) 78%,transparent)}
 .bar span{background:var(--meter-neutral)}
@@ -389,7 +383,7 @@ html.dark .globe-label{box-shadow:0 1px 2px rgba(0,0,0,.22),0 6px 18px rgba(0,0,
   .kpis{gap:8px;margin-bottom:10px}.kpi{min-height:92px;padding:12px;border-radius:9px}.kpi:hover{transform:none}
   .presence-card{padding:6px;margin-bottom:10px;border-radius:10px}.globe-head{padding:0 11px}.globe-stage{height:250px}.globe-holder{width:232px;height:232px;top:52%}
   .nodes{gap:8px}.node{border-radius:10px}.node:hover{transform:none}.nodes-panel>.panel-head{margin-bottom:8px;padding-inline:3px}
-  .os-badge{padding:1px 4px 1px 3px}
+  
   .detail-kpi:hover,.back:hover{transform:none}
 }
 @media(max-width:420px){
@@ -507,17 +501,7 @@ html.dark .node:hover{background:color-mix(in srgb,var(--t-card-bg) 99.5%,#fff .
 .identity{gap:9px}
 .node-title strong{font-size:14px}
 .node-meta{margin-top:5px;gap:6px;font-size:10px;overflow:visible}
-.os-badge{
-  min-height:24px;
-  padding:3px 7px 3px 5px;
-  gap:6px;
-  border:0;
-  border-radius:8px;
-  background:var(--t-chip-bg);
-  box-shadow:inset 0 0 0 1px var(--t-card-border);
-  color:color-mix(in srgb,var(--text) 74%,var(--muted));
-  flex:0 0 auto;
-}
+
 .os-icon{width:17px;height:17px}
 .flag{width:25px;height:17px;border-radius:5px}
 .node-open{border-radius:9px;background:var(--t-card-bg);box-shadow:inset 0 0 0 1px var(--t-card-border)}
@@ -614,7 +598,7 @@ html.drawer-open{overflow:hidden}
   .topbar{margin:0 -8px;padding:0 8px}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kpi{min-height:94px;padding:13px;border-radius:12px}
   .presence-card{border-radius:14px;padding:7px}.globe-stage{height:250px}.globe-holder{width:232px;height:232px}
-  .os-badge{min-height:23px;padding:3px 6px 3px 5px}.os-icon{width:16px;height:16px}
+  .os-icon{width:16px;height:16px}
   .detail-overlay{padding:0;align-items:flex-end;background:rgba(18,18,16,0)}
   .detail-overlay.is-open{background:rgba(18,18,16,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
   .detail-drawer{
@@ -704,7 +688,7 @@ html.dark .presence-map{background:linear-gradient(180deg,#181818,#141414)}
 .meta-inline{min-width:0;overflow:hidden;text-overflow:ellipsis;font:540 9.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
 .meta-sep{font-size:10px}
 .node-extra{margin-top:4px;padding-left:0}
-.os-badge{display:none!important}
+
 .flag{width:26px;height:18px}
 .node-open{background:var(--t-card-bg)}
 
@@ -966,10 +950,10 @@ html.dark .brand-mark img{filter:invert(1)}
 .node-card.online .node-card-runtime i{background:var(--ok)}
 .node-card-open{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
 .node-card-open svg{width:13px;height:13px}
-.node-card-meta{margin:9px 0 13px;min-height:28px;min-width:0;display:flex;align-items:center;gap:8px;color:var(--muted);font:540 10px/1.2 var(--font-data);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.node-card-meta>span:last-child{overflow:hidden;text-overflow:ellipsis}
-.node-card-meta .os-mark{width:26px;height:26px;border:0;border-radius:0;background:transparent;box-shadow:none;display:grid;place-items:center;flex:0 0 auto}
-.node-card-meta .os-icon{width:24px;height:24px}
+
+
+
+
 .node-card-resources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 16px}
 .card-resource{min-width:0}
 .card-resource-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;color:var(--muted);font:540 9.5px/1.2 var(--font-ui)}
@@ -994,9 +978,9 @@ html.dark .brand-mark img{filter:invert(1)}
   .node-card-identity{gap:7px}
   .node-card-identity strong{font-size:14.5px}
   .node-card-runtime{padding:4px 6px;font-size:9px}
-  .node-card-meta{margin:8px 0 12px;min-height:28px;font-size:9.5px;gap:8px}
-  .node-card-meta .os-mark{width:25px;height:25px}
-  .node-card-meta .os-icon{width:23px;height:23px}
+  
+  
+  
   .node-card-resources{gap:12px 14px}
   .card-resource .bar{height:6px;background:color-mix(in srgb,var(--soft) 88%,var(--border))}
   .card-resource-top{font-size:9px}
@@ -1010,201 +994,82 @@ html.dark .brand-mark img{filter:invert(1)}
 /* v0.9.10 — active-view DOM only; skip offscreen node layout work. */
 @supports (content-visibility:auto){.node{content-visibility:auto;contain-intrinsic-size:auto 92px}.node-card{content-visibility:auto;contain-intrinsic-size:auto 220px}}
 
-
-/* v1.2.0 — CF-Atlas-style high-density network matrix on node cards only. */
+/* Consolidated node-card/network/runtime overrides — v1.3.25.
+   Same final behavior as the former v1.2–v1.3.23 override stack, without historical dead layers. */
 .card-traffic-label{min-width:0;display:inline-flex;align-items:baseline;gap:5px}
-.card-traffic-label em{font:500 8.2px/1 var(--font-data);font-style:normal;color:var(--faint);white-space:nowrap}
-.node-card-network{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
-.network-column{min-width:0;display:grid;gap:7px}
-.network-column+.network-column{padding-left:10px;border-left:1px solid var(--border)}
-.network-lane{min-width:0}
-.network-lane-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px;margin-bottom:4px;color:var(--muted)}
-.network-lane-head span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:560 8.8px/1 var(--font-ui)}
-.network-lane-head b{flex:0 0 auto;color:var(--text);font:650 9.6px/1 var(--font-data);font-variant-numeric:tabular-nums}
-.network-samples{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;height:5px}
-.network-samples i{display:block;min-width:0;height:5px;border-radius:1.5px;background:var(--soft)}
-.network-samples i.ok{background:color-mix(in srgb,var(--ok) 86%,var(--soft))}
-.network-samples i.warn{background:color-mix(in srgb,var(--warn) 86%,var(--soft))}
-.network-samples i.bad{background:color-mix(in srgb,var(--bad) 84%,var(--soft))}
-.network-samples i.idle{background:color-mix(in srgb,var(--soft) 82%,var(--border))}
-.node-card-network.is-loading{opacity:.52}
-@media(max-width:760px){
-  .card-traffic-label{gap:4px}.card-traffic-label em{font-size:7.9px}
-  .node-card-network{gap:8px;margin-top:9px;padding-top:9px}
-  .network-column{gap:6px}.network-column+.network-column{padding-left:8px}
-  .network-lane-head{margin-bottom:3px}.network-lane-head span{font-size:8.5px}.network-lane-head b{font-size:9.3px}
-  .network-samples{gap:1.5px;height:5px}.network-samples i{height:5px}
-}
-@media(max-width:390px){
-  .card-traffic-label em{font-size:7.5px}
-  .node-card-network{gap:7px}.network-column+.network-column{padding-left:7px}
-  .network-lane-head span{font-size:8.1px}.network-lane-head b{font-size:8.9px}
-  .network-samples{gap:1px}
-}
-@supports (content-visibility:auto){.node-card{contain-intrinsic-size:auto 330px}}
-
-
-/* v1.3.0 — align card grid with overview width + 7D network context. */
+.card-traffic-label em{font:500 8.2px/1 var(--font-data);font-style:normal;color:var(--card-meta);white-space:nowrap}
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
-  --net-ok:var(--meter-neutral);
-  --net-warn:rgb(226 116 24);
-  --net-bad:rgb(202 54 52);
-  contain:paint;
+  --net-ok:var(--meter-neutral);--net-warn:rgb(226 116 24);--net-bad:rgb(202 54 52);
+  --loss-ok:rgb(58 160 104);--loss-warn:rgb(48 145 93);--loss-bad:rgb(41 129 82);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--border);contain:paint
 }
 html.dark .node-card-network{
-  --net-ok:var(--meter-neutral);
-  --net-warn:rgb(230 128 32);
-  --net-bad:rgb(218 70 66);
+  --net-ok:var(--meter-neutral);--net-warn:rgb(230 128 32);--net-bad:rgb(218 70 66);
+  --loss-ok:rgb(72 178 118);--loss-warn:rgb(60 162 104);--loss-bad:rgb(50 145 96)
 }
-.network-lane-head span{display:block}
-.network-samples{gap:2px;height:6px;contain:layout paint}
-.network-samples i{height:6px;border-radius:999px}
+.network-column{min-width:0;display:grid;gap:7px}
+.network-column+.network-column{padding-left:10px;border-left:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
+.network-lane{min-width:0}
+.network-lane-head{display:flex;align-items:baseline;justify-content:space-between;gap:6px;margin-bottom:4px;color:var(--muted)}
+.network-lane-head span{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:560 8.8px/1 var(--font-ui)}
+.network-lane-head b{flex:0 0 auto;color:var(--text);font:650 9.6px/1 var(--font-data);font-variant-numeric:tabular-nums}
+.network-samples{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:2px;height:6px;contain:layout paint}
+.network-samples i{display:block;min-width:0;height:6px;border-radius:999px;background:var(--soft)}
 .network-samples i.ok{background:var(--net-ok);box-shadow:none}
 .network-samples i.warn{background:var(--net-warn);box-shadow:none}
 .network-samples i.bad{background:var(--net-bad);box-shadow:none}
-.network-samples i.idle{border-radius:999px}
-@media(max-width:760px){
-  .node-card-grid{padding-left:0;padding-right:0}
-  .network-samples{gap:1.5px;height:6px}.network-samples i{height:6px}
-}
-@media(max-width:390px){
-  .network-samples{gap:1.2px}
-}
-
-
-/* v1.3.1 — 7D lives in detail history only; overview remains 1H and lightweight. */
-
-
-/* v1.3.2 — Mac/Safari paint fix: bright solid pills, no per-pill blur shadows. */
-
-
-/* v1.3.3 — healthy network samples use Atlas neutral gray; warn/bad keep color. */
-
-
-/* v1.3.4 — relaxed 10-pill density + low-saturation copper warning tone. */
-
-
-/* v1.3.5 — softer three-step network palette: light gray / muted orange / soft red. */
-
-
-/* v1.3.6 — unified neutral meters + orange warnings + warmer soft red. */
-
-
-/* v1.3.7 — darker shared neutral; card resource bars explicitly match network OK pills. */
+.network-samples i.idle{background:color-mix(in srgb,var(--soft) 82%,var(--border));border-radius:999px}
+.network-loss .network-samples i.ok{background:var(--loss-ok)}
+.network-loss .network-samples i.warn{background:var(--loss-warn)}
+.network-loss .network-samples i.bad{background:var(--loss-bad)}
+.network-latency .network-samples i.ok{background:var(--loss-ok)}
+.node-card-network.is-loading{opacity:.52}
 .card-resource .bar:not(.card-traffic-bar) span{background:var(--meter-neutral)}
-
-
-/* v1.3.8 — deeper neutral gray + clearer orange + warmer red, still without glow. */
-
-
-/* v1.3.9 — two-step deeper black / orange / red palette. */
-
-
-/* v1.3.10 — two more steps darker neutral; three steps deeper orange and red. */
-
-
-/* v1.3.11 — light-theme orange/red separation; dark palette unchanged. */
-
-
-/* v1.3.12 — packet-loss lanes use a tender green family; resource/latency colors stay unchanged. */
-.node-card-network{
-  --loss-ok:rgb(58 160 104);
-  --loss-warn:rgb(48 145 93);
-  --loss-bad:rgb(41 129 82);
-}
-html.dark .node-card-network{
-  --loss-ok:rgb(72 178 118);
-  --loss-warn:rgb(60 162 104);
-  --loss-bad:rgb(50 145 96);
-}
-.network-loss .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
-.network-loss .network-samples i.warn{background:var(--loss-warn);box-shadow:none}
-.network-loss .network-samples i.bad{background:var(--loss-bad);box-shadow:none}
-
-/* v1.3.13 — darker tender green + quota traffic color ramp. */
-.card-traffic{
-  --traffic-ok:rgb(58 160 104);
-  --traffic-warn:rgb(226 116 24);
-  --traffic-bad:rgb(202 54 52);
-}
-html.dark .card-traffic{
-  --traffic-ok:rgb(72 178 118);
-  --traffic-warn:rgb(230 128 32);
-  --traffic-bad:rgb(218 70 66);
-}
+.card-traffic{--traffic-ok:rgb(58 160 104);--traffic-warn:rgb(226 116 24);--traffic-bad:rgb(202 54 52)}
+html.dark .card-traffic{--traffic-ok:rgb(72 178 118);--traffic-warn:rgb(230 128 32);--traffic-bad:rgb(218 70 66)}
 .bar.card-traffic-bar span{background:var(--traffic-ok)}
 
-
-/* v1.3.15 — solid RGB palette: higher saturation, no glow/shadow. */
-
-
-/* v1.3.16 — card status/meta cleanup + unified live presence dot. */
 .presence-dot{width:6px!important;height:6px!important;border-radius:50%;display:inline-block;flex:0 0 auto;background:var(--faint)}
 .live-mode.ws .presence-dot,.node-card.online .node-card-runtime .presence-dot{
-  background:var(--ok);
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 10%,transparent);
-  animation:presencePulse 2.6s ease-in-out infinite;
+  background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 10%,transparent);animation:presencePulse 2.6s ease-in-out infinite
 }
 .live-mode.poll .presence-dot{background:var(--warn);box-shadow:none;animation:none}
 .live-mode.connecting .presence-dot{background:var(--faint);box-shadow:none;animation:pulse 1.2s ease-in-out infinite}
 .node-card.offline .node-card-runtime .presence-dot{background:var(--bad);box-shadow:none;animation:none}
 @keyframes presencePulse{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--ok) 3%,transparent)}}
 
-
-/* v1.3.17 — move static machine metadata into the CPU header; OS icon stays by node title. */
-.node-card-resources{margin-top:14px}
-.node-card-os{width:19px;height:19px;display:grid;place-items:center;flex:0 0 auto;color:var(--muted)}
-.node-card-os .os-icon{width:18px;height:18px;display:block}
-.card-resource-label{min-width:0;display:inline-flex;align-items:baseline;gap:5px;white-space:nowrap}
-.card-resource-label em{min-width:0;overflow:hidden;text-overflow:ellipsis;font:520 8.2px/1 var(--font-data);font-style:normal;color:var(--faint)}
-@media(max-width:760px){
-  .node-card-resources{margin-top:13px}
-  .node-card-os{width:18px;height:18px}.node-card-os .os-icon{width:17px;height:17px}
-  .card-resource-label{gap:4px}.card-resource-label em{font-size:7.9px}
-}
-
-
-/* v1.3.18 — consistent card hierarchy + low-latency green + softer divider. */
-.node-card{
-  --card-label:color-mix(in srgb,var(--muted) 68%,var(--text));
-  --card-meta:color-mix(in srgb,var(--muted) 82%,var(--text));
-}
-.card-resource-top>span{color:var(--card-label)}
-.card-resource-label em,.card-traffic-label em{color:var(--card-meta)}
-.card-resource-sub,.node-card-activity span{color:var(--card-meta)}
+.node-card{--card-label:color-mix(in srgb,var(--muted) 68%,var(--text));--card-meta:color-mix(in srgb,var(--muted) 82%,var(--text))}
 .node-card-resources{margin-top:9px}
-.network-column+.network-column{border-left-color:color-mix(in srgb,var(--border) 55%,transparent)}
-.network-latency .network-samples i.ok{background:var(--loss-ok);box-shadow:none}
-@media(max-width:760px){.node-card-resources{margin-top:8px}}
+.node-card-os{width:19px;height:19px;display:grid;place-items:center;flex:0 0 auto;color:var(--card-meta)}
+.node-card-os .os-icon{width:17px;height:17px;display:block}
+.card-resource-label{min-width:0;display:inline-flex;align-items:baseline;gap:5px;white-space:nowrap}
+.card-resource-label em{min-width:0;overflow:hidden;text-overflow:ellipsis;font:520 8.2px/1 var(--font-data);font-style:normal;color:var(--card-meta)}
+.card-resource-top>span{color:var(--card-label)}
+.card-resource-sub,.node-card-activity span{color:var(--card-meta)}
 
-
-/* v1.3.19 — mobile detail swipe-to-close; no extra UI chrome. */
-@media(max-width:760px){
-  .detail-drawer{touch-action:pan-y}
-}
-
-
-/* v1.3.20 — restrained system glyph; monochrome, technical, no mascot treatment. */
-.node-card-os{color:var(--card-meta)}
-.drawer-os-icon{border-radius:8px;background:color-mix(in srgb,var(--t-chip-bg) 78%,transparent)}
-.drawer-os-svg{width:18px;height:18px}
-
-
-/* v1.3.21 — recognizable distro glyphs; detail header shows glyph only, no chip/tag frame. */
-.drawer-os-icon{
-  width:22px;height:22px;border-radius:0;background:transparent!important;
-  box-shadow:none!important;display:grid;place-items:center;color:var(--muted)
-}
+.drawer-os-icon{width:22px;height:22px;border-radius:0;background:transparent!important;box-shadow:none!important;display:grid;place-items:center;color:var(--muted)}
 .drawer-os-svg{width:20px;height:20px}
-.node-card-os{color:var(--card-meta)}
-
-
-/* v1.3.22 — shared SVG sprite for OS glyphs; no layout/paint footprint. */
 .os-sprite{position:absolute!important;width:0!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
-
-
-/* v1.3.23 — font-logo-like distro glyphs + optically centered admin sliders icon. */
-.node-card-os .os-icon{width:17px;height:17px}
 .admin-btn{width:34px!important}
 .admin-btn svg{width:16px!important;height:16px!important;display:block;transform:translateY(.15px)}
+
+@media(max-width:760px){
+  .card-traffic-label{gap:4px}.card-traffic-label em{font-size:7.9px}
+  .node-card-network{gap:8px;margin-top:9px;padding-top:9px}
+  .network-column{gap:6px}.network-column+.network-column{padding-left:8px}
+  .network-lane-head{margin-bottom:3px}.network-lane-head span{font-size:8.5px}.network-lane-head b{font-size:9.3px}
+  .network-samples{gap:1.5px;height:6px}.network-samples i{height:6px}
+  .node-card-resources{margin-top:8px}
+  .node-card-os{width:18px;height:18px}.node-card-os .os-icon{width:17px;height:17px}
+  .card-resource-label{gap:4px}.card-resource-label em{font-size:7.9px}
+  .detail-drawer{touch-action:pan-y}
+}
+@media(max-width:390px){
+  .card-traffic-label em{font-size:7.5px}
+  .node-card-network{gap:7px}.network-column+.network-column{padding-left:7px}
+  .network-lane-head span{font-size:8.1px}.network-lane-head b{font-size:8.9px}
+  .network-samples{gap:1.2px}
+}
+@supports (content-visibility:auto){.node-card{contain-intrinsic-size:auto 330px}}
