@@ -1048,8 +1048,8 @@ html.dark .brand-mark img{filter:invert(1)}
 .node-card-grid{padding-left:0;padding-right:0;background:transparent}
 .node-card-network{
   --net-ok:var(--meter-neutral);
-  --net-warn:rgb(201 88 24);
-  --net-bad:rgb(188 52 49);
+  --net-warn:rgb(218 132 42);
+  --net-bad:rgb(181 62 58);
   contain:paint;
 }
 html.dark .node-card-network{
@@ -1102,3 +1102,6 @@ html.dark .node-card-network{
 
 
 /* v1.3.10 — two more steps darker neutral; three steps deeper orange and red. */
+
+
+/* v1.3.11 — light-theme orange/red separation; dark palette unchanged. */
