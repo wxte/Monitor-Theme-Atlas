@@ -1009,3 +1009,18 @@ html.dark .brand-mark img{filter:invert(1)}
 
 /* v0.9.10 — active-view DOM only; skip offscreen node layout work. */
 @supports (content-visibility:auto){.node{content-visibility:auto;contain-intrinsic-size:auto 92px}.node-card{content-visibility:auto;contain-intrinsic-size:auto 220px}}
+
+
+/* v1.1.0 — three-network latency stays visible in the primary node card. */
+.node-card-latency{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.latency-item{min-width:0;display:flex;align-items:center;gap:5px;color:var(--muted);font:560 9px/1 var(--font-data);white-space:nowrap}
+.latency-item i{width:5px;height:5px;border-radius:50%;background:var(--faint);flex:0 0 auto}
+.latency-item small{font:560 9px/1 var(--font-ui);overflow:hidden;text-overflow:ellipsis}
+.latency-item b{margin-left:auto;color:var(--text);font:660 10px/1 var(--font-data)}
+.latency-item.ok i{background:var(--ok)}
+.latency-item.warn i{background:var(--warn)}
+.latency-item.bad i{background:var(--bad)}
+.node-card-latency.is-loading{opacity:.58}
+@media(max-width:760px){.node-card-latency{gap:7px;margin-top:9px;padding-top:9px}.latency-item{gap:4px}.latency-item small{font-size:8.8px}.latency-item b{font-size:9.8px}}
+@media(max-width:390px){.latency-item small{font-size:8.4px}.latency-item b{font-size:9.3px}}
+@supports (content-visibility:auto){.node-card{contain-intrinsic-size:auto 260px}}
