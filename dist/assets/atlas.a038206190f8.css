@@ -1104,6 +1104,7 @@ html.dark .detail-drawer{
 
 
 /* v1.3.27 — desktop list parity + stable card/list switching. */
+.node{--card-label:color-mix(in srgb,var(--muted) 68%,var(--text));--card-meta:color-mix(in srgb,var(--muted) 82%,var(--text))}
 .nodes-panel{overflow-anchor:none}
 .nodes-panel.view-list .nodes{padding:12px 0}
 .nodes .node-heading strong{max-width:none;flex:1 1 auto}
