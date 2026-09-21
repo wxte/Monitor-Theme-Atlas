@@ -1,4 +1,5 @@
 import assert from "node:assert/strict"
+// Contract checks verify rendered behavior, not historical CSS declaration order.
 import fs from "node:fs"
 import vm from "node:vm"
 
@@ -34,7 +35,7 @@ assert.ok(source.includes("Math.min(2,nodes.length)"), "overview latency loader 
 assert.ok(css.includes(".node-card-network"), "primary node cards must expose the three-network matrix")
 assert.ok(css.includes(".node-card-grid{padding-left:0;padding-right:0"), "card grid must align with the overview width")
 assert.ok(css.includes("border-radius:999px"), "network sample pills must stay rounded")
-assert.ok(css.includes(".network-samples{gap:2px;height:6px;contain:layout paint}"), "network samples must keep paint containment")
+assert.ok(/\.network-samples\{[^}]*gap:2px[^}]*height:6px[^}]*contain:layout paint[^}]*\}/.test(css), "network samples must keep paint containment")
 assert.ok(css.includes(".network-samples i.ok{background:var(--net-ok);box-shadow:none}"), "network pills must not use blur shadows")
 assert.ok(css.includes("--meter-neutral:#32363b"), "shared deeper light meter gray missing")
 assert.ok(css.includes("--net-ok:var(--meter-neutral)"), "healthy network samples must use the shared meter gray")
@@ -45,7 +46,7 @@ assert.ok(css.includes("grid-template-columns:repeat(10,minmax(0,1fr))"), "netwo
 assert.ok(css.includes("--net-warn:rgb(226 116 24)"), "warning samples must use the deeper orange tone")
 assert.ok(css.includes("--net-bad:rgb(202 54 52)"), "bad samples must use the clearer soft red tone")
 assert.ok(css.includes("--loss-ok:rgb(58 160 104)"), "packet-loss tender green missing")
-assert.ok(css.includes(".network-loss .network-samples i.bad{background:var(--loss-bad);box-shadow:none}"), "packet-loss bad state must stay in the green family")
+assert.ok(css.includes(".network-loss .network-samples i.bad{background:var(--loss-bad)}") && css.includes(".network-samples i.bad{background:var(--net-bad);box-shadow:none}"), "packet-loss bad state must stay green and shadow-free")
 assert.ok(source.includes("function trafficBarGradient(percent)"), "quota traffic color ramp helper missing")
 assert.ok(source.includes("function beginDrawerSwipe(e)"), "mobile drawer swipe start missing")
 assert.ok(source.includes("fallback=Math.max(8,mid*.08)"), "Hampel MAD=0 fallback missing")
@@ -69,8 +70,8 @@ assert.ok(!source.slice(source.indexOf("function nodeCard(node)"),source.indexOf
 assert.ok(css.includes(".card-resource-label em"), "CPU architecture/virtualization styling missing")
 assert.ok(css.includes(".card-resource-top>span{color:var(--card-label)}"), "resource label hierarchy must stay consistent")
 assert.ok(css.includes(".card-resource-sub,.node-card-activity span{color:var(--card-meta)}"), "secondary card metadata must share one hierarchy tone")
-assert.ok(css.includes(".network-latency .network-samples i.ok{background:var(--loss-ok);box-shadow:none}"), "low latency samples must use the packet-loss green")
-assert.ok(css.includes("border-left-color:color-mix(in srgb,var(--border) 55%,transparent)"), "network center divider must stay subtle")
+assert.ok(css.includes(".network-latency .network-samples i.ok{background:var(--loss-ok)}") && css.includes(".network-samples i.ok{background:var(--net-ok);box-shadow:none}"), "low latency samples must use the packet-loss green without shadows")
+assert.ok(/border-left(?::1px solid|-color:) color-mix\(in srgb,var\(--border\) 55%,transparent\)/.test(css), "network center divider must stay subtle")
 assert.ok(source.includes('live-mode ${mode}"><i class="presence-dot"></i>'), "LIVE status must use the shared presence dot")
 assert.ok(source.includes("trafficResetText"), "node cards must expose traffic reset timing")
 assert.ok(!source.includes("nodeExtraText(node,m)"), "overview ping must stay card-only")
