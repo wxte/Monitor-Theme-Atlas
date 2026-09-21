@@ -1189,3 +1189,12 @@ html.dark .card-traffic{
 .node-card-os{color:var(--card-meta)}
 .drawer-os-icon{border-radius:8px;background:color-mix(in srgb,var(--t-chip-bg) 78%,transparent)}
 .drawer-os-svg{width:18px;height:18px}
+
+
+/* v1.3.21 — recognizable distro glyphs; detail header shows glyph only, no chip/tag frame. */
+.drawer-os-icon{
+  width:22px;height:22px;border-radius:0;background:transparent!important;
+  box-shadow:none!important;display:grid;place-items:center;color:var(--muted)
+}
+.drawer-os-svg{width:20px;height:20px}
+.node-card-os{color:var(--card-meta)}
