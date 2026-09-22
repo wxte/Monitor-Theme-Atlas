@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+theme.tar.gz
+theme.tar.gz.sha256
